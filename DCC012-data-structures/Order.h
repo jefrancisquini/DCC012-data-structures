@@ -10,6 +10,8 @@ public:
 	void bubbleSort(Rating *vet, int tamanho);
 	int partition(Rating *arr, int low, int high);
 	void quickSort(Rating *arr, int low, int high);
+	int partition(float *arr, int low, int high);
+	void quickSort(float *arr, int low, int high);
 	int comparacaoChave = 0;
 	int totalTrocas = 0;
 };
@@ -61,6 +63,37 @@ int Order::partition(Rating *arr, int low, int high)
 }
 
 void Order::quickSort(Rating *arr, int low, int high)
+{
+	if (low < high)
+	{
+		int pi = partition(arr, low, high);
+		quickSort(arr, low, pi - 1);
+		quickSort(arr, pi + 1, high);
+	}
+}
+
+int Order::partition(float *arr, int low, int high)
+{
+	float pivot = arr[high];    //taking the last element as pivot
+	int i = (low - 1);
+	for (int j = low; j <= high - 1; j++)
+	{
+		// If current element is smaller than or
+		// equal to pivot
+		comparacaoChave++;
+		if (arr[j] <= pivot)
+		{
+			i++;
+			totalTrocas++;
+			swap(arr[i], arr[j]);
+		}
+	}
+	totalTrocas++;
+	swap(arr[i + 1], arr[high]);
+	return (i + 1);
+}
+
+void Order::quickSort(float *arr, int low, int high)
 {
 	if (low < high)
 	{
