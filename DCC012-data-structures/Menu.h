@@ -84,6 +84,7 @@ void Menu::menuPrincipal() {
 			}
 			case 1: {				
 				this->menuAnaliseAlgoritimos();
+				opcao = 0;
 				break;
 			}
 			case 2: {
